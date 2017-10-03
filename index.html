@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title>RPS Multiplayer</title>
+	<link rel="icon" href="assets/images/RockIcon.png">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+
+</head>
+<body>
+	
+	<!-- Start Container: -->
+	<div class="container">
+		<div class="col-md-3 mx-auto">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="Enter your name" aria-label="Name...">
+				<span class="input-group-btn">
+					<button class="btn btn-success" id="start" type="button">Start</button>
+				</span>
+			</div>
+		</div>
+	</div>
+
+	<!-- Our container that contains the RPS buttons: -->	
+	<div class="container">
+		<div class="row justify-content-around">
+			<div class="col-md-4">
+				<div class="card">
+					<h4 class="card-header">Player 1</h4>
+					<div class="card-body">
+						<p class="card-text">Select your choice</p>
+						<button type="button" class="btn btn-primary">Rock</button>
+						<button type="button" class="btn btn-primary">Paper</button>
+						<button type="button" class="btn btn-primary">Scissors</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card">
+					<h4 class="card-header">Player 2</h4>
+					<div class="card-body">
+						<p class="card-text">Select your choice</p>
+						<button type="button" class="btn btn-primary">Rock</button>
+						<button type="button" class="btn btn-primary">Paper</button>
+						<button type="button" class="btn btn-primary">Scissors</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</body>
+</html>
