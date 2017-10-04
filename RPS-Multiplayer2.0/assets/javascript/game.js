@@ -34,34 +34,36 @@ function startup() {
 startup();
 
 $("#submit").on("click", function() {
-  
-  var name = $(".form-control").val();
 
-  // database.ref("variables").set({
-  //   playerNumber: playerNumber
-  // });
+  var name = $(".form-control").val();
 
   var buttonNumber = parseInt($("#submit").attr("button-number"));
   console.log(parseInt(buttonNumber));
 
   if (buttonNumber === 1) {
-  buttonNumber++;
+    buttonNumber++;
 
-  $("#playername").html(name);
+    $("#player1name").html(name);
 
-  database.ref("/players/player1").set({
-    name: name
-  });
+    database.ref("/players/player1").set({
+      name: name
+    });
 
-  database.ref("/variables").set({
-    playerNumber: buttonNumber
-  });
+    database.ref("/variables").set({
+      playerNumber: buttonNumber
+    });
+
+    $("#topcard").html("<h4 id='pname'> Good luck " + name + "!</h4>")
+
+    $("#p1box").css("display", "block");
+
   }
 
   else {
+
     buttonNumber++
 
-    $("#playername").html(name);
+    $("#player2name").html(name);
     
     database.ref("/players/player2").set({
       name: name
@@ -70,16 +72,114 @@ $("#submit").on("click", function() {
     database.ref("variables").set({
       playerNumber: buttonNumber
     });
+
+    $("#topcard").html("<h4 id='pname'> Good luck " + name + "!</h4>");
+
+    $("#p2box").css("display", "block");
+
+    console.log("Game has started");
+
   }
 
-  // if (buttonNumber === 3) {
-  //   $("#topcard").html("Ok");
-  // }
+});
 
-})
+// All the choice button functions:
+function buttonfunctions() {
+  $("#R1").on("click",function() {
+    $("#R1").css("background", "#007bff");
+    $("#R1").css("color", "white");  
+    $("#P1").css("background", "white");
+    $("#P1").css("color", "#007bff");
+    $("#S1").css("background", "white");
+    $("#S1").css("color", "#007bff");
+    $("#ready1").css("display", "block");
+    database.ref("/players/player1").update({
+      choice: "Rock"
+    });
+  })
 
+  $("#P1").on("click",function() {
+    $("#P1").css("background", "#007bff");
+    $("#P1").css("color", "white");
+    $("#R1").css("background", "white");
+    $("#R1").css("color", "#007bff");
+    $("#S1").css("background", "white");
+    $("#S1").css("color", "#007bff");
+    $("#ready1").css("display", "block");
+    database.ref("/players/player1").update({
+      choice: "Paper"
+    });
+  })
 
+  $("#S1").on("click",function() {
+    $("#S1").css("background", "#007bff");
+    $("#S1").css("color", "white");
+    $("#R1").css("background", "white");
+    $("#R1").css("color", "#007bff");
+    $("#P1").css("background", "white");
+    $("#P1").css("color", "#007bff");
+    $("#ready1").css("display", "block");
+    database.ref("/players/player1").update({
+      choice: "Scissors"
+    });
+  })
 
+  $("#R2").on("click",function() {
+    $("#R2").css("background", "#007bff");
+    $("#R2").css("color", "white");  
+    $("#P2").css("background", "white");
+    $("#P2").css("color", "#007bff");
+    $("#S2").css("background", "white");
+    $("#S2").css("color", "#007bff");
+    $("#ready2").css("display", "block");
+
+    database.ref("/players/player2").update({
+      choice: "Rock"
+    });
+  })
+
+  $("#P2").on("click",function() {
+    $("#P2").css("background", "#007bff");
+    $("#P2").css("color", "white");
+    $("#R2").css("background", "white");
+    $("#R2").css("color", "#007bff");
+    $("#S2").css("background", "white");
+    $("#S2").css("color", "#007bff");
+    $("#ready2").css("display", "block");
+    database.ref("/players/player2").update({
+      choice: "Paper"
+    });
+  })
+
+  $("#S2").on("click",function() {
+    $("#S2").css("background", "#007bff");
+    $("#S2").css("color", "white");
+    $("#R2").css("background", "white");
+    $("#R2").css("color", "#007bff");
+    $("#P2").css("background", "white");
+    $("#P2").css("color", "#007bff");
+    $("#ready2").css("display", "block");
+    database.ref("/players/player2").update({
+      choice: "Scissors"
+    });
+  })
+}
+
+buttonfunctions();
+
+function ready() {
+
+  $("#ready1").on("click", function() {
+    console.log("Player 1 is ready!");
+  });
+
+  $("#ready2").on("click", function() {
+    console.log("Player 2 is ready!");
+  });
+
+};
+
+ready();
 
 // Old code: 
 

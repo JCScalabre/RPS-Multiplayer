@@ -25,3 +25,15 @@ body {
 	margin-top: -3px;
 	vertical-align: bottom;
 }
+
+#topcard {
+	height: 131px;
+}
+
+#pname {
+	margin-top: 50px;
+}
+
+#p2box, #p1box, #ready1, #ready2 {
+	display: none;
+}
