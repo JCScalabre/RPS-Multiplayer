@@ -12,7 +12,7 @@
 <body>
 
 	<!-- Start Container: -->
-	<div class="container" id="player1input">
+	<!-- <div class="container" id="player1input">
 		<div class="col-md-4 mx-auto">
 			<div class="card" id="inputcard">
 				<h4 class="card-title"><span id="playernumber">Enter Player 1's Name:</span></h4>
@@ -24,30 +24,38 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-	<!-- Our container that contains the RPS buttons: -->	
 	<div class="container">
 		<div class="row justify-content-around">
 			<div class="col-md-4">
 				<div class="card">
-					<h4 class="card-header"><span id="player1name">Player 1</h4>
+					<h4 class="card-header"><span id="player1name">Enter your name</h4>
 						<div class="card-body">
-							<p class="card-text">Select your choice</p>
-							<button type="button" class="btn btn-primary" id="R1">Rock</button>
-							<button type="button" class="btn btn-primary" id="P1">Paper</button>
-							<button type="button" class="btn btn-primary" id="S1">Scissors</button>
+							<p class="card-text">You are player 1</p>
+							<div class="input-group mx-auto">
+								<input type="text" class="form-control" aria-label="Name...">
+								<span class="input-group-btn">
+									<button class="btn btn-success" id="submit" type="button">Submit</button>
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+
+		<!-- Our container that contains the RPS buttons: -->	
+		<div class="container">
+			<div class="row justify-content-around">
 				<div class="col-md-4">
 					<div class="card">
-						<h4 class="card-header"><span id="player2name">Player 2</h4>
+						<h4 class="card-header"><span id="player1name">James</h4>
 							<div class="card-body">
 								<p class="card-text">Select your choice</p>
-								<button type="button" class="btn btn-primary" id="R2">Rock</button>
-								<button type="button" class="btn btn-primary" id="P2">Paper</button>
-								<button type="button" class="btn btn-primary" id="S2">Scissors</button>
+								<button type="button" class="btn btn-primary" id="R1">Rock</button>
+								<button type="button" class="btn btn-primary" id="P1">Paper</button>
+								<button type="button" class="btn btn-primary" id="S1">Scissors</button>
 							</div>
 						</div>
 					</div>

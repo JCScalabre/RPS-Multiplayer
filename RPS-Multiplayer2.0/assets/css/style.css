@@ -10,12 +10,11 @@ body {
 
 #inputcard {
 	height: 118px;
-	padding: 20px;
 	margin-bottom: 40px;
 }
 
 .input-group {
-	width: 70%;
+	width: 85%;
 }
 
 #player2input {
