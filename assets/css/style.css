@@ -10,19 +10,25 @@ body {
 
 #inputcard {
 	height: 118px;
-	padding: 20px;
 	margin-bottom: 40px;
 }
 
 .input-group {
-	width: 70%;
+	width: 85%;
 }
 
 #player2input {
 	display: none;
 }
 
-#maythe {
-	margin-top: -3px;
-	vertical-align: bottom;
+#topcard {
+	height: 131px;
+}
+
+#pname {
+	margin-top: 50px;
+}
+
+#p2box, #p1box, #ready1, #ready2, #winner {
+	display: none;
 }
