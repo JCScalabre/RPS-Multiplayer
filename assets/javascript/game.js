@@ -69,7 +69,7 @@ $("#submit").on("click", function() {
       name: name
     });
 
-    database.ref("variables").set({
+    database.ref("variables").update({
       playerNumber: buttonNumber
     });
 
