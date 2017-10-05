@@ -32,3 +32,14 @@ body {
 #p2box, #p1box, #ready1, #ready2, #winner {
 	display: none;
 }
+
+#check1, #check2 {
+	height: 40px;
+	margin-left: 20px;
+	visibility: hidden;
+}
+
+
+#ready1button, #ready2button {
+	margin-left: 44px;
+}

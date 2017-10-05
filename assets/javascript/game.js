@@ -171,6 +171,7 @@ function ready() {
 
   $("#ready1").on("click", function() {
     console.log("Player 1 is ready!");
+    $("#check1").css("visibility", "visible");
     database.ref("/variables/readystate").update({
       player1: "ready"
     })
@@ -178,6 +179,7 @@ function ready() {
 
   $("#ready2").on("click", function() {
     console.log("Player 2 is ready!");
+    $("#check2").css("visibility", "visible");
     database.ref("/variables/readystate").update({
       player2: "ready"
     });
@@ -185,60 +187,58 @@ function ready() {
 
   database.ref("/variables/readystate").on("value", function(snapshot) {
     var ready = snapshot.numChildren();
+    console.log("Ready: " + ready)
 
-  database.ref("/players").on("value", function(snapshot) {
-    var p1name = snapshot.val().player1.name;
-    var p2name = snapshot.val().player2.name;
-    // console.log(p1name);
-    // console.log(p2name);
-    var p1choice = snapshot.val().player1.choice;
-    var p2choice = snapshot.val().player2.choice;
-    // console.log(p1choice, p2choice);
-    var winnername;
+    database.ref("/players").on("value", function(snapshot) {
+      var p1name = snapshot.val().player1.name;
+      var p2name = snapshot.val().player2.name;
+      var p1choice = snapshot.val().player1.choice;
+      var p2choice = snapshot.val().player2.choice;
+      var winnername;
 
-    if (p1choice === "Rock" && p2choice === "Rock") {
-      winnername = "Both players chose Rock, <br> It was a tie!";
-    }
+      if (p1choice === "Rock" && p2choice === "Rock") {
+        winnername = "Both players chose Rock, <br> It was a tie!";
+      }
 
-    if (p1choice === "Rock" && p2choice === "Paper") {
-      winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p2name + " wins!";
-    }
+      if (p1choice === "Rock" && p2choice === "Paper") {
+        winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p2name + " wins!";
+      }
 
-    if (p1choice === "Rock" && p2choice === "Scissors") {
-      winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p1name + " wins!";
-    } 
+      if (p1choice === "Rock" && p2choice === "Scissors") {
+        winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p1name + " wins!";
+      } 
 
-    if (p1choice === "Paper" && p2choice === "Rock") {
-      winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p1name + " wins!";
-    }
+      if (p1choice === "Paper" && p2choice === "Rock") {
+        winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p1name + " wins!";
+      }
 
-    if (p1choice === "Paper" && p2choice === "Paper") {
-      winnername = "Both players chose Paper, <br> It was a tie!";
-    }
+      if (p1choice === "Paper" && p2choice === "Paper") {
+        winnername = "Both players chose Paper, <br> It was a tie!";
+      }
 
-    if (p1choice === "Paper" && p2choice === "Scissors") {
-      winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p2name + " wins!";
-    }
+      if (p1choice === "Paper" && p2choice === "Scissors") {
+        winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p2name + " wins!";
+      }
 
-    if (p1choice === "Scissors" && p2choice === "Rock") {
-      winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p2name + " wins!";
-    }
+      if (p1choice === "Scissors" && p2choice === "Rock") {
+        winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p2name + " wins!";
+      }
 
-    if (p1choice === "Scissors" && p2choice === "Paper") {
-      winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p1name + " wins!";
-    }
+      if (p1choice === "Scissors" && p2choice === "Paper") {
+        winnername = p1name + " chose: " + p1choice + " <br>" + p2name + " chose: " + p2choice + "<br>" + p1name + " wins!";
+      }
 
-    if (p1choice === "Scissors" && p2choice === "Scissors") {
-      winnername = "Both players chose Scissors, <br> It was a tie!";
-    }
+      if (p1choice === "Scissors" && p2choice === "Scissors") {
+        winnername = "Both players chose Scissors, <br> It was a tie!";
+      }
 
-        if (ready === 2){
-      console.log("Both players are ready!");
-      $("#winner").css("display", "block");
-      $("#winnername").html(winnername);
-    }
+      if (ready === 2){
+        console.log("Both players are ready!");
+        $("#winner").css("display", "block");
+        $("#winnername").html(winnername);
+      }
 
-  });
+    });
 
   })
 
@@ -246,65 +246,31 @@ function ready() {
 
 ready();
 
-// Old code: 
+// playagain();
 
-// var playerNumber = 1;
+function playagain() {
+  $("#playagain").on("click", function() {
+    database.ref("/variables/readystate").set({
+    });
+    database.ref("/variables/playagainstate").set({
+      playagain: true
+    })
+  });
 
+  database.ref("/variables/playagainstate").on("value", function(snapshot) {
+    var playagain = snapshot.numChildren();
+    console.log(playagain);
 
-// function startup () {
+    if (playagain === 1) {
+      $("#winner").css("display", "none");
+      $("#check1").css("visibility", "hidden");
+      $("#check2").css("visibility", "hidden");
+      $("#ready1").css("display", "none");
+      $("#ready2").css("display", "none");
 
-//   database.ref("/variables").set({
-//     playerNumber: "1",
-//   });
+      console.log("This line is happening");
+    }
+    
+  });
 
-
-//   database.ref().on("value", function(snapshot) {
-//     // console.log(snapshot.val().variables.playerNumber);
-//     $("#playerheader").html(snapshot.val().variables.playerNumber);
-
-//   })
-
-// }
-
-// // database.ref().on("value", function(snapshot) {
-// //   // console.log(snapshot.val().players.player1.player+1);
-// //   $("#playerheader").html(snapshot.val().players.player1.player+1);
-// // });
-
-// startup();
-
-// // When the submit button is clicked for the first time:
-// $("#submit").on("click", function() {
-
-//   var name = $(".form-control").val();
-
-//   if (playerNumber < 3) {
-//     database.ref("/players/player" + playerNumber).set({
-//       name: name,
-//     });
-
-//   playerNumber++;
-
-//   database.ref("/variables").set({
-//     playerNumber: playerNumber
-//   });
-
-
-//   $("#playername").html(name);
-
-
-
-//     $("#submit").attr("id", "submit2");
-//   }
-
-//   // $("#submit2").on("click", function() {
-//   //   console.log("You pressed button 2");
-//   //   $("#topcard").html("<h4>Good Luck!</h4>")
-//   // })
-
-// });
-
-// // database.ref().on("child_added", function(snapshot) {
-// //   var name = snapshot.val().name;
-// //   console.log("Player 1: " + name);
-// // })
+}
